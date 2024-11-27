@@ -96,8 +96,8 @@ class _YZHomePageState extends State<YZHomePage> {
         children: [
           TextButton.icon(
               onPressed: () {
-                AmapFlutterSearch.setApiKey('3b4acde13d0603ecbea0b74781eafaf3',
-                    'df6898859be82405b9b41d8d1f1e86d3');
+                AmapFlutterSearch.setApiKey('a29db99df2bfcb28e880acd2373d1b44',
+                    '9a23c9b6d14aa3e6192ca5e5c5122df5');
                 AmapFlutterSearch.updatePrivacyAgree(true);
                 AmapFlutterSearch.updatePrivacyShow(true, true);
               },

@@ -27,8 +27,8 @@ class _YZTestMapPageState extends State<YZTestMapPage> {
       body: Container(
           child: AMapWidget(
         apiKey: AMapApiKey(
-            androidKey: '3b4acde13d0603ecbea0b74781eafaf3',
-            iosKey: 'df6898859be82405b9b41d8d1f1e86d3'),
+            androidKey: 'a29db99df2bfcb28e880acd2373d1b44',
+            iosKey: '9a23c9b6d14aa3e6192ca5e5c5122df5'),
         privacyStatement: AMapPrivacyStatement(
             hasAgree: true, hasContains: true, hasShow: true),
         onTap: (v) async {},

@@ -2,29 +2,24 @@ package com.example.amap_flutter_search;
 
 import android.content.Context;
 import android.text.TextUtils;
-
 import androidx.annotation.NonNull;
-
 import com.amap.api.services.core.AMapException;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.core.PoiItem;
 import com.amap.api.services.core.ServiceSettings;
 import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel;
+import io.flutter.plugin.common.MethodChannel.Result;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import io.flutter.Log;
-import io.flutter.embedding.engine.plugins.FlutterPlugin;
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
+
+
+
 
 /** AmapFlutterSearchPlugin */
 public class AmapFlutterSearchPlugin implements FlutterPlugin, MethodCallHandler,
@@ -133,6 +128,7 @@ public class AmapFlutterSearchPlugin implements FlutterPlugin, MethodCallHandler
     if (null != searchParams) {
       String keyword = (String) searchParams.get("keyword");
       String city = (String) searchParams.get("city");
+      
       PoiSearch.Query query = new PoiSearch.Query(keyword,"",city);
       query.setPageSize(35);
       query.setPageNum(1);
@@ -155,13 +151,17 @@ public class AmapFlutterSearchPlugin implements FlutterPlugin, MethodCallHandler
       String city = (String) searchParams.get("city");
       Double latitude = (Double) searchParams.get("latitude");
       Double longitude = (Double) searchParams.get("longitude");
+      Integer radius = (Integer) searchParams.get("radius");
+      Integer pageSize = (Integer) searchParams.get("pageSize");
+      Integer page = (Integer) searchParams.get("page");
+
 
       PoiSearch.Query query = new PoiSearch.Query(keyword,"",city);
-      query.setPageSize(35);
-      query.setPageNum(1);
+      query.setPageSize(pageSize);
+      query.setPageNum(page);
 
       poiSearch = new PoiSearch(mContext,query);
-      poiSearch.setBound(new PoiSearch.SearchBound(new LatLonPoint(latitude,longitude),1000));
+      poiSearch.setBound(new PoiSearch.SearchBound(new LatLonPoint(latitude,longitude),radius));
 
       poiSearch.setOnPoiSearchListener(this);
       poiSearch.searchPOIAsyn();

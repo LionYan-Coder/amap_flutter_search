@@ -43,11 +43,11 @@
         geo.keywords = keyword;
         geo.city = city;
         geo.types               = types;
-        geo.requireExtension    = YES;
+        // geo.requireExtension    = YES;
             
         /*  搜索SDK 3.2.0 中新增加的功能，只搜索本城市的POI。*/
         geo.cityLimit           = YES;
-        geo.requireSubPOIs      = YES;
+        // geo.requireSubPOIs      = YES;
         
         [search AMapPOIKeywordsSearch:geo];
         
@@ -58,6 +58,9 @@
         NSString *city = call.arguments[@"city"];
         NSString *latitude = call.arguments[@"latitude"];
         NSString *longitude = call.arguments[@"longitude"];
+        NSString *radius = call.arguments[@"radius"];
+        NSString *pageSize = call.arguments[@"pageSize"];
+        NSString *page = call.arguments[@"page"];
         search = [[AMapSearchAPI alloc] init];
         search.delegate = self;
         AMapPOIAroundSearchRequest *geo = [[AMapPOIAroundSearchRequest alloc] init];
@@ -65,8 +68,11 @@
         geo.city = city;
         geo.location            = [AMapGeoPoint locationWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
         geo.keywords            = keyword;
-        geo.requireExtension    = YES;
-        geo.requireSubPOIs      = YES;
+        geo.radius              = [radius intValue];
+        geo.pageSize            = [pageSize intValue];
+        geo.page                = [page intValue];
+        // geo.requireExtension    = YES;
+        // geo.requireSubPOIs      = YES;
         
         [search AMapPOIAroundSearch:geo];
         
