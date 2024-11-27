@@ -37,5 +37,7 @@ android {
 
 dependencies {
     //搜索功能
-    implementation 'com.amap.api:search:latest.integration'
+    implementation ('com.amap.api:search:9.7.1') {
+        exclude group: 'com.amap.api', module: 'location'
+    }
 }
