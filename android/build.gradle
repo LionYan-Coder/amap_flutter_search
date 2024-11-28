@@ -39,7 +39,5 @@ dependencies {
     //搜索功能
     implementation ('com.amap.api:search:9.7.1') {
         exclude group: 'com.amap.api', module: 'location'
-        exclude group: 'com.amap.api', module: 'search-core'
-        exclude group: 'com.amap.apis.utils', module: 'core'
     }
 }
